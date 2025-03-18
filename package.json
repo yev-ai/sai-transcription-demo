@@ -1,5 +1,6 @@
 {
-    "name": "coderpad-nextjs",
+    "name": "sai-transcription-demo",
+    "license": "Copyright (c) 2025 sully.ai - All rights reserved",
     "version": "0.1.0",
     "private": true,
     "scripts": {
