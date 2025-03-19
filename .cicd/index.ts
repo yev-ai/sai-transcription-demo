@@ -16,5 +16,5 @@ const launchTemplate = createLaunchTemplate(dockerImage);
 const asg = createAsg(launchTemplate, dockerImage);
 
 // Reminder: this is a public repository.
-export const dockerDigest = dockerImage.repoDigest;
+export const dockerDigest = dockerImage.repoDigest.apply(digest => digest.split('@')[1]);
 export const consolePassword = secret(serialConsolePassword);

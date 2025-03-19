@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "CoderPad Next.js Template",
-  description: "A template for Next.js projects on CoderPad",
+  title: 'CoderPad Next.js Template',
+  description: 'A template for Next.js projects on CoderPad',
 };
 
 export default function RootLayout({
