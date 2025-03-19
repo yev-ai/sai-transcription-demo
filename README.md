@@ -8,6 +8,14 @@ A Miro board will be our substitute for CoderPad's drawing feature.
 
 Items located within the .github and .cicd directories serve as substitutes for CoderPad's development environment.
 
+## Usage
+
+TODO - 18min left
+
+## Debriefing
+
+TODO - 18min left
+
 ## Notes
 
 Infrastructure is a mess but the goal there was to mirror CoderPad for a fair and impartial interview process.
@@ -19,3 +27,5 @@ Beginning code assessment.
   - otherwise I may spend most of the remaining 3hr15min on UI and i dont think thats the point here
 - 1:45pm - auth is done, back to miro to determine what I should do next.
   - i decided on webrtc first. implementing /webrtc-base
+- 3:19pm - webrtc stream was harder than expected. 1hr45left, will focus on english-english transcript.
+- 4:37pm - I am running extremely low on time. Going to package and deploy and start documenting issues / usability.

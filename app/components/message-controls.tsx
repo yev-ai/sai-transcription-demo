@@ -1,22 +1,20 @@
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import Transcriber from '@/components/ui/transcriber';
 import { Conversation, Message as MessageType } from '@types';
-import { Terminal } from 'lucide-react';
 import { useState } from 'react';
 
 function FilterControls({
   typeFilter,
   setTypeFilter,
-  searchQuery,
-  setSearchQuery,
+  // searchQuery,
+  // setSearchQuery,
   messageTypes,
-  messages,
-}: {
+}: // messages,
+{
   typeFilter: string;
   setTypeFilter: (value: string) => void;
   searchQuery: string;
@@ -38,11 +36,12 @@ function FilterControls({
           ))}
         </SelectContent>
       </Select>
-      <Input placeholder="Search messages" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="flex-1" />
+      {/* // Not enough time to implement. */}
+      {/* <Input placeholder="Search messages" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="flex-1" />
       <Button variant="outline" onClick={() => console.log(messages)}>
         <Terminal />
         Log to Console
-      </Button>
+      </Button> */}
     </div>
   );
 }
@@ -56,7 +55,7 @@ export function MessageControls({ conversation, msgs }: { conversation: Conversa
   // Get unique message types
   const messageTypes = ['all', ...new Set(msgs.map(msg => msg.type))];
 
-  console.dir(msgs);
+  // console.dir(msgs);
   // Filter messages based on type and search query
   const filteredMsgs = msgs.filter(msg => {
     const matchesType = typeFilter === 'all' || msg.type === typeFilter;
