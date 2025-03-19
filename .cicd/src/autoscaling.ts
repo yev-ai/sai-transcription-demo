@@ -17,9 +17,7 @@ export const createAsg = (launchTemplate: ec2.LaunchTemplate) =>
     },
     launchTemplate: {
       id: launchTemplate.id,
-      version: launchTemplate.defaultVersion.apply((version) =>
-        version.toString()
-      ),
+      version: "$Default",
     },
     healthCheckType: "ELB",
     targetGroupArns: [targetGroup.arn],
