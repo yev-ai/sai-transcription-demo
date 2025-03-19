@@ -6,7 +6,12 @@ export default function Home() {
     <div className={styles.app}>
       <div className={styles.header}>
         <div>
-          <Image src="https://storage.googleapis.com/coderpad_project_template_assets/coderpad_logo.svg" alt="CodePad Logo" />
+          <Image
+            src="https://storage.googleapis.com/coderpad_project_template_assets/coderpad_logo.svg"
+            width={100}
+            height={24}
+            alt="CodePad Logo"
+          />
         </div>
         <div>
           <Image src="/next-typography.svg" alt="Nextjs Logo" width={100} height={24} priority />

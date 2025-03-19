@@ -35,5 +35,7 @@ export const buildArgs = pulumiConfig.requireObject<{
 
 export const appArgs = pulumiConfig.requireObject<{
   PORT: string;
+  NEXTAUTH_SECRET: string;
+  NEXTAUTH_URL: string;
   NODE_ENV: string;
 }>('appArgs');
