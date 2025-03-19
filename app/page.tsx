@@ -16,7 +16,7 @@ export default function Home() {
         <Image src="/next.svg" alt="Next.js Logo" width={180} height={37} priority />
         <p>Hello Next.js!</p>
       </div>
-      <div className={styles.footer}>Use the Shell to install new packages. CICD Test.</div>
+      <div className={styles.footer}>Use the Shell to install new packages.</div>
     </div>
   );
 }
