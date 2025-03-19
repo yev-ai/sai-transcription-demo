@@ -8,6 +8,14 @@ A Miro board will be our substitute for CoderPad's drawing feature.
 
 Items located within the .github and .cicd directories serve as substitutes for CoderPad's development environment.
 
+## Usage
+
+TODO - 18min left
+
+## Debriefing
+
+TODO - 18min left
+
 ## Notes
 
 Infrastructure is a mess but the goal there was to mirror CoderPad for a fair and impartial interview process.
