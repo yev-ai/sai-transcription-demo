@@ -19,3 +19,4 @@ Beginning code assessment.
   - otherwise I may spend most of the remaining 3hr15min on UI and i dont think thats the point here
 - 1:45pm - auth is done, back to miro to determine what I should do next.
   - i decided on webrtc first. implementing /webrtc-base
+- 3:19pm - webrtc stream was harder than expected. 1hr45left, will focus on english-english transcript.
