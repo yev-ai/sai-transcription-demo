@@ -12,7 +12,6 @@ export const createAsg = (launchTemplate: ec2.LaunchTemplate) =>
       strategy: "Rolling",
       preferences: {
         minHealthyPercentage: 50,
-        autoRollback: true,
       },
     },
     launchTemplate: {
