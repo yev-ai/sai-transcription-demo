@@ -10,6 +10,7 @@ const users = {
 } as const;
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  trustHost: true,
   providers: [
     CredentialsProvider({
       name: 'Credentials',
@@ -28,4 +29,22 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
+  session: { strategy: 'jwt' },
+
+  callbacks: {
+    jwt({ token, user }) {
+      if (user) {
+        token.role = user.role;
+        token.sub = user.id;
+        token.roomId = user.roomId;
+      }
+      return token;
+    },
+    session({ session, token }) {
+      session.user.role = token.role;
+      session.user.id = token.id as string;
+      session.user.roomId = token.roomId;
+      return session;
+    },
+  },
 });
