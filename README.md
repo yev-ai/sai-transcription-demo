@@ -13,3 +13,5 @@ Items located within the .github and .cicd directories serve as substitutes for 
 Infrastructure is a mess but the goal there was to mirror CoderPad for a fair and impartial interview process.
 
 Beginning code assessment.
+
+1:00pm - starting requirement analysis, system design, and implementation plan in Miro
