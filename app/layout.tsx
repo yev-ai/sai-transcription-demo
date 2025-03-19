@@ -1,3 +1,4 @@
+import { LanguagePairProvider } from '@/hooks/use-language';
 import type { Metadata } from 'next';
 import { SessionProvider } from 'next-auth/react';
 import { Inter } from 'next/font/google';
@@ -20,8 +21,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <SessionProvider>
-          <Header />
-          {children}
+          <LanguagePairProvider>
+            <Header />
+            {children}
+          </LanguagePairProvider>
         </SessionProvider>
       </body>
     </html>

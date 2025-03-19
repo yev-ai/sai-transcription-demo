@@ -38,4 +38,5 @@ export const appArgs = pulumiConfig.requireObject<{
   NEXTAUTH_SECRET: string;
   NEXTAUTH_URL: string;
   NODE_ENV: string;
+  OPENAI_API_KEY: string;
 }>('appArgs');
