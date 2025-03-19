@@ -10,17 +10,17 @@ Items located within the .github and .cicd directories serve as substitutes for 
 
 ## Usage
 
-TODO - 18min left
+- Logins will be forwarded to POC (they're also in the code in plaintext)
+- Log In, click "Start". Two people speak in different languages, they are auto recognized and linked into a pair.
+- "repeat that" does work in both contexts, along with "reset languages".
 
 ## Debriefing
 
-TODO - 18min left
+TODO - 12min left. Disabling CICD pipeline.
 
 ## Notes
 
 Infrastructure is a mess but the goal there was to mirror CoderPad for a fair and impartial interview process.
-
-Beginning code assessment.
 
 - 1:00pm - starting requirement analysis, system design, and implementation plan in Miro
 - 1:43pm - harsh reality check. I'm rusty at react and will be reverse engineering a repo i found
@@ -29,3 +29,4 @@ Beginning code assessment.
   - i decided on webrtc first. implementing /webrtc-base
 - 3:19pm - webrtc stream was harder than expected. 1hr45left, will focus on english-english transcript.
 - 4:37pm - I am running extremely low on time. Going to package and deploy and start documenting issues / usability.
+- 4:45pm - kicked off final prod deployment for testing of what i did manage to complete.
