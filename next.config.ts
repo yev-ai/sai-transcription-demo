@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   experimental: {
     reactCompiler: true,
   },
+  allowedDevOrigins: ['*'],
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
