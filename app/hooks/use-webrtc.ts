@@ -70,7 +70,7 @@ export default function useWebRTCAudioSession(voice: string, tools?: Tool[]): Us
     };
     dataChannel.send(JSON.stringify(sessionUpdate));
 
-    console.log('Session update sent:', sessionUpdate);
+    // console.log('Session update sent:', sessionUpdate);
     const languageMessage = {
       type: 'conversation.item.create',
       item: {
