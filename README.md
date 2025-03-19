@@ -11,3 +11,5 @@ Items located within the .github and .cicd directories serve as substitutes for 
 ## Notes
 
 Infrastructure is a mess but the goal there was to mirror CoderPad for a fair and impartial interview process.
+
+Beginning code assessment.
