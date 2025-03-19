@@ -1,27 +1,53 @@
-import Image from 'next/image';
+'use client';
+
+import { BroadcastButton } from '@/components/broadcast-button';
+import { TextInput } from '@/components/text-input';
+import { useToolsFunctions } from '@/hooks/use-tools';
+import useWebRTCAudioSession from '@/hooks/use-webrtc';
+import { tools } from '@/lib/tools';
+import { useSession } from 'next-auth/react';
+import React, { useEffect } from 'react';
+import { MessageControls } from './components/message-controls';
 import styles from './page.module.css';
 
-export default function Home() {
-  return (
-    <div className={styles.app}>
-      <div className={styles.header}>
-        <div>
-          <Image
-            src="https://storage.googleapis.com/coderpad_project_template_assets/coderpad_logo.svg"
-            width={100}
-            height={24}
-            alt="CodePad Logo"
-          />
-        </div>
-        <div>
-          <Image src="/next-typography.svg" alt="Nextjs Logo" width={100} height={24} priority />
-        </div>
-      </div>
-      <div className={styles.content}>
-        <Image src="/next.svg" alt="Next.js Logo" width={180} height={37} priority />
-        <p>Hello Next.js!</p>
-      </div>
-      <div className={styles.footer}>Use the Shell to install new packages.</div>
-    </div>
+const App: React.FC = () => {
+  const { status: authStatus } = useSession();
+  const isLoggedIn = authStatus === 'authenticated';
+
+  const { status, isSessionActive, registerFunction, handleStartStopClick, msgs, conversation, sendTextMessage } = useWebRTCAudioSession(
+    'ash',
+    tools
   );
-}
+
+  const toolsFunctions = useToolsFunctions();
+
+  useEffect(() => {
+    Object.entries(toolsFunctions).forEach(([name, func]) => {
+      const functionNames: Record<string, string> = {
+        SET_LANGUAGES: 'SET_LANGUAGES',
+        REMIND_LANGUAGES: 'REMIND_LANGUAGES',
+        RESET_LANGUAGES: 'RESET_LANGUAGES',
+      };
+
+      registerFunction(functionNames[name], func);
+    });
+  }, [registerFunction, toolsFunctions]);
+
+  return isLoggedIn ? (
+    <div className={styles.app}>
+      <div className="flex flex-col items-center gap-4">
+        <BroadcastButton isSessionActive={isSessionActive} onClick={handleStartStopClick} />
+        {status && (
+          <div>
+            <MessageControls conversation={conversation} msgs={msgs} />
+            <TextInput onSubmit={sendTextMessage} disabled={!isSessionActive} />
+          </div>
+        )}
+      </div>
+    </div>
+  ) : (
+    <div> Please Log In </div>
+  );
+};
+
+export default App;

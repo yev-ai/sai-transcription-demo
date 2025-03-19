@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   experimental: {
     reactCompiler: true,
   },
-  allowedDevOrigins: ['*'],
+  allowedDevOrigins: 'https:/sai-demo-3c1fq9.yev.ai,https://webrtc.yev.ai'.split(','),
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
