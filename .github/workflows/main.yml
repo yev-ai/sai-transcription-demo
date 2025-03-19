@@ -39,7 +39,7 @@ jobs:
           role-session-name: default
       - name: Install Pulumi Dependencies
         run: cd ./.cicd && bun install
-      - name: Deploy Infrastucture and Application
+      - name: Update Infra and Push to ECR
         uses: pulumi/actions@v6
         with:
           work-dir: ./.cicd

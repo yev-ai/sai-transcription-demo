@@ -1,37 +1,42 @@
-import { NextConfig } from "next";
+import { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  output: "standalone", // for websocket perf
+  output: 'standalone',
   experimental: {
     reactCompiler: true,
   },
   images: {
-    formats: ["image/avif", "image/webp"],
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "**",
+        protocol: 'https',
+        hostname: '**',
       },
     ],
   },
   async headers() {
     return [
       {
-        source: "/api/auth/(.*)",
-        headers: [{ key: "Cache-Control", value: "no-store" }],
+        source: '/api/auth/(.*)',
+        headers: [{ key: 'Cache-Control', value: 'no-store' }],
       },
       {
-        source: "/api/stream/(.*)",
-        headers: [{ key: "Connection", value: "keep-alive" }],
+        source: '/api/stream/(.*)', // Infra compatibility
+        headers: [{ key: 'Connection', value: 'keep-alive' }],
       },
       {
-        source: "/(.*)",
+        // This is for a specific cloudflared caching + compression layer.
+        source: '/:path*\\.(svg|png|jpg|jpeg|gif|ico)',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+      {
+        source: '/(.*)',
         headers: [
-          { key: "X-Content-Type-Options", value: "nosniff" },
-          { key: "X-Frame-Options", value: "DENY" },
-          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
         ],
       },
     ];

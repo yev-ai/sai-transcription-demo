@@ -1,4 +1,4 @@
-import { RandomPassword } from "@pulumi/random";
+import { RandomPassword } from '@pulumi/random';
 
 export const createPassword = (pulumiResourceName: string) =>
   new RandomPassword(pulumiResourceName, {

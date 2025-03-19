@@ -1,9 +1,14 @@
 .cicd
 .github
+.git
 .vscode
 .gitignore
+.eslintrc.json
+.prettierrc
+.dockerignore
 README.md
 
+node_modules
 .next
 dist
 out
