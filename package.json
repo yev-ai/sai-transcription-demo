@@ -1,24 +1,31 @@
 {
-    "name": "sai-transcription-demo",
-    "license": "Copyright (c) 2025 sully.ai - All rights reserved",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-      "dev": "next dev",
-      "build": "next build",
-      "start": "next start",
-      "lint": "next lint"
-    },
-    "dependencies": {
-      "react": "^18",
-      "react-dom": "^18",
-      "next": "14.2.4"
-    },
-    "devDependencies": {
-      "typescript": "^5",
-      "@types/node": "^20",
-      "@types/react": "^18",
-      "@types/react-dom": "^18"
-    }
+  "name": "sai-transcription-demo",
+  "license": "Copyright (c) 2025 sully.ai - All rights reserved",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "NODE_OPTIONS='--max-old-space-size=8192' NEXT_CPU_COUNT=$(nproc) bun --bun next build",
+    "dev": "bun --bun next dev",
+    "docker:build": "docker build -f ./.cicd/Dockerfile -t sai-transcription-demo .",
+    "docker:start": "docker run -p 3000:3000 sai-transcription-demo",
+    "start": "bun --bun next start",
+    "lint": "bun --bun next lint"
+  },
+  "dependencies": {
+    "next": "^15.2.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "@types/react": "^19.0.11",
+    "@types/react-dom": "^19.0.4",
+    "babel-plugin-react-compiler": "^19.0.0-beta-bafa41b-20250307",
+    "bun": "^1.2.5",
+    "eslint": "9.22.0",
+    "eslint-config-next": "15.2.3"
+  },
+  "engines": {
+    "bun": ">=1.2.4"
   }
-  
+}

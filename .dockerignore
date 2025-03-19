@@ -1,0 +1,14 @@
+.cicd
+.github
+.vscode
+.gitignore
+README.md
+
+.next
+dist
+out
+coverage
+
+.docker
+.env*
+*.log

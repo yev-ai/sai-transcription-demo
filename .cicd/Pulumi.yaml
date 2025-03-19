@@ -1,0 +1,6 @@
+name: sai-transcription-demo
+description: SAI Transcription Demo
+runtime:
+  name: nodejs
+  options:
+    typescript: true
