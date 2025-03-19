@@ -17,3 +17,5 @@ Beginning code assessment.
 - 1:00pm - starting requirement analysis, system design, and implementation plan in Miro
 - 1:43pm - harsh reality check. I'm rusty at react and will be reverse engineering a repo i found
   - otherwise I may spend most of the remaining 3hr15min on UI and i dont think thats the point here
+- 1:45pm - auth is done, back to miro to determine what I should do next.
+  - i decided on webrtc first. implementing /webrtc-base
