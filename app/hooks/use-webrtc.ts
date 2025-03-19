@@ -234,6 +234,8 @@ export default function useWebRTCAudioSession(voice: string, tools?: Tool[]): Us
 
       // Always log the raw message
       setMsgs(prevMsgs => [...prevMsgs, msg]);
+
+      // We need to duplex this serverside. Doing this here because im running behind and doing it this way will take care of the "Send Transcript" serverside action and build foundation for english-english.
       return msg;
     } catch (error) {
       console.error('Error handling data channel message:', error);
