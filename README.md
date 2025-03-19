@@ -14,4 +14,4 @@ Infrastructure is a mess but the goal there was to mirror CoderPad for a fair an
 
 Beginning code assessment.
 
-1:00pm - starting requirement analysis, system design, and implementation plan in Miro
+- 1:00pm - starting requirement analysis, system design, and implementation plan in Miro
