@@ -1,0 +1,2 @@
+environment:
+  - isolated-accounts-aws/sai-transcription-demo-secondary

@@ -54,7 +54,7 @@ export const createTunnelWithRoute = (resourcePrefix: string, config: Cloudflare
 };
 
 export const createSaiTunnelWithRoute = () =>
-  createTunnelWithRoute('sai', {
+  createTunnelWithRoute('sai-2', {
     warpRouting: { enabled: true },
     ingressRules: [
       {
