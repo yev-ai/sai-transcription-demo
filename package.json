@@ -1,16 +1,15 @@
 {
   "name": "sai-transcription-demo",
-  "license": "Copyright (c) 2025 sully.ai - All rights reserved",
+  "license": "Copyright (c) Yevai Inc - All rights reserved",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "build": "NODE_OPTIONS='--max-old-space-size=8192' NEXT_CPU_COUNT=$(nproc) bun --bun next build",
     "deploy": "cd ./.cicd && bunx pulumi up",
     "dev": "bun --bun next dev",
-    "dev:docker": "docker build -f ./.cicd/Dockerfile-local -t sai-transcription-demo-local . && docker run -p 3000:3000 sai-transcription-demo-local",
     "docker:build": "docker build -f ./.cicd/Dockerfile -t sai-transcription-demo .",
     "docker:start": "docker run -p 3000:3000 sai-transcription-demo",
-    "ec2:get-password": "cd ./.cicd && bunx pulumi stack output --json --show-secrets | jq \".consolePassword\"",
+    "ec2:pw": "cd ./.cicd && bunx pulumi stack output --json --show-secrets | jq \".consolePassword\"",
     "start": "bun --bun next start",
     "lint": "bun --bun next lint"
   },

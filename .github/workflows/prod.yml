@@ -4,7 +4,7 @@ run-name: Deployment by ${{ github.actor }}
 on:
   push:
     branches:
-      - main
+      - prod
 
 concurrency:
   group: ${{ github.workflow }}
@@ -12,7 +12,6 @@ concurrency:
 jobs:
   sai-demo-deployment:
     name: SAI Demo Deployment
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
       id-token: write
