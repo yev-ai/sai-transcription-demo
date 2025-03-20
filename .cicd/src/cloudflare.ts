@@ -61,6 +61,8 @@ export const createSaiTunnelWithRoute = () =>
         hostname: `${subdomain}.${tld}`,
         service: hostConfig.tunnelTarget,
         originRequest: {
+          noTlsVerify: true,
+          http2Origin: true,
           noHappyEyeballs: true,
         },
       },
