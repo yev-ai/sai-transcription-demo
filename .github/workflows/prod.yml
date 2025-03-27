@@ -42,7 +42,7 @@ jobs:
         uses: pulumi/actions@v6
         with:
           work-dir: ./.cicd
-          command: up
+          command: destroy
           stack-name: ${{ secrets.PULUMI_STACK }}
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
