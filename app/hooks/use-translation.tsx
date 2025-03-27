@@ -1,7 +1,7 @@
 'use client';
 
 import { Conversation, StreamMessage } from '@types';
-import React, { createContext, useCallback, useContext, useState } from 'react';
+import React, { createContext, useCallback, useContext, useRef, useState } from 'react';
 
 /**
  * Context for managing translation state throughout the application
@@ -22,15 +22,15 @@ const TranslationContext = createContext<TranslationContextType | null>(null);
  */
 export function TranslationProvider({ children }: { children: React.ReactNode }) {
   const [translations, setTranslations] = useState<StreamMessage[]>([]);
-
+  const processedMessages = useRef<Set<string>>(new Set());
   /**
    * Sends a conversation message to the translation API and updates state
    * Uses the mapReduce pattern by sending/retrieving data and reducing to UI state
    */
   const forwardMessage = useCallback(async (message: Conversation) => {
     // Skip non-final messages to prevent duplicate translations
-    if (!message.isFinal && message.role === 'user') return;
-
+    if ((!message.isFinal && message.role === 'user') || processedMessages.current.has(message.timestamp)) return;
+    processedMessages.current.add(message.timestamp);
     try {
       // Forward the message to the translation API
       const response = await fetch('/api/stream', {

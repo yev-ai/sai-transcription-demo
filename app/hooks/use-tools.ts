@@ -1,12 +1,20 @@
 'use client';
 
 import { useLanguagePair } from './use-language';
+import { useStreamCommand } from './use-stream';
 
 export const useToolsFunctions = () => {
   const { languagePair, setLanguagePair, resetLanguagePair } = useLanguagePair();
+  const { executeCommand } = useStreamCommand();
 
-  const SEND_TRANSCRIPT = () => `Implement server-side action.`;
-  const SEND_PRESCRIPTION = () => `Implement server-side action.`;
+  const NOTE_TRANSCRIPT_REQUEST = () => {
+    executeCommand('CMD::NOTE_TRANSCRIPT_REQUEST'); // Don't await
+    return { success: true };
+  };
+  const NOTE_PRESCRIPTION_REQUEST = ({ prescriptionRequestDetails }: { prescriptionRequestDetails: string }) => {
+    executeCommand(`CMD::NOTE_PRESCRIPTION_REQUEST::${prescriptionRequestDetails}`); // Don't await
+    return { success: true };
+  };
 
   const SET_LANGUAGES = (params: {
     userALanguage: string;
@@ -39,7 +47,7 @@ export const useToolsFunctions = () => {
     SET_LANGUAGES,
     REMIND_LANGUAGES,
     RESET_LANGUAGES,
-    SEND_TRANSCRIPT,
-    SEND_PRESCRIPTION,
+    NOTE_TRANSCRIPT_REQUEST,
+    NOTE_PRESCRIPTION_REQUEST,
   };
 };

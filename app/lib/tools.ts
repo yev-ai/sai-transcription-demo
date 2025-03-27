@@ -15,6 +15,29 @@ interface Tool {
 }
 
 const toolDefinitions = {
+  NOTE_TRANSCRIPT_REQUEST: {
+    description: 'Call this tool to log that you were asked to send a transcript or a copy of the conversation.',
+    parameters: {
+      type: 'object',
+      properties: {},
+      additionalProperties: false,
+    },
+  },
+  NOTE_PRESCRIPTION_REQUEST: {
+    description: 'Call this tool to log that you were asked to send a prescription, we already know what kind.',
+    parameters: {
+      type: 'object',
+      properties: {
+        prescriptionRequestDetails: {
+          type: 'string',
+          description:
+            'Details about the latest prescription, including the medication and recent comments about it like dosage, pharmacy, and instructions.',
+        },
+      },
+      required: ['prescriptionRequestDetails'],
+      additionalProperties: false,
+    },
+  },
   SET_LANGUAGES: {
     description:
       'Sets the language pair for the session. Provide the detected languages for User A and User B as ISO 639-1 codes ' +

@@ -26,6 +26,8 @@ const ConversationWithTranslation: React.FC = () => {
       SET_LANGUAGES: 'SET_LANGUAGES',
       REMIND_LANGUAGES: 'REMIND_LANGUAGES',
       RESET_LANGUAGES: 'RESET_LANGUAGES',
+      NOTE_TRANSCRIPT_REQUEST: 'NOTE_TRANSCRIPT_REQUEST',
+      NOTE_PRESCRIPTION_REQUEST: 'NOTE_PRESCRIPTION_REQUEST',
     } as const;
 
     // Map over tool functions to register each with WebRTC session

@@ -5,7 +5,25 @@ import { NextRequest, NextResponse } from 'next/server';
 const PING_INTERVAL = 15000; // 15sec because of our infra keepalive
 
 /** Store for tracking conversation history across sessions */
-const commandStore = new Map<string, StreamMessage[]>();
+const commandStore = new Map<number, StreamMessage & { goal: string; role?: string }>();
+
+const _sendPrescription = (details: string) => {
+  // Call any LLM api with a forced return; Gemini is the best for this.
+  console.log('Prescription Request: ', details);
+};
+
+const _sendTranscript = () => {
+  const assist = Array.from(commandStore.values()).filter(msg => msg.type === 'assistant');
+  const user = Array.from(commandStore.values()).filter(msg => msg.type === 'user');
+  const transcript = [
+    ...assist.map(msg => ({ ...msg, role: 'assistant' as const })).slice(1),
+    ...user.map(msg => ({ ...msg, role: 'user' as const })).slice(1),
+  ].sort((a, b) => a.timestamp - b.timestamp);
+  console.dir(
+    transcript.map(x => `${x.role}: ${x.goal}`),
+    { depth: 5 }
+  );
+};
 
 /**
  * Process a command and stream responses with translation capabilities
@@ -20,11 +38,14 @@ async function executeCommandWithStreaming(
   onDataCallback: (data: StreamMessage) => void,
   userIdentifier: string,
   // eslint-disable-next-line
-  originalMessage?: Record<string, any>
+  originalMessage: Record<string, any>
 ): Promise<void> {
   // Generate deterministic session ID for conversation tracking
   const sessionId = `${userIdentifier}-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
-
+  originalMessage ? commandStore.set(originalMessage.timestamp, { ...(originalMessage as StreamMessage), goal }) : null;
+  if (goal && goal.includes('CMD::NOTE_TRANSCRIPT_REQUEST')) _sendTranscript();
+  if (goal && goal.startsWith('CMD::NOTE_PRESCRIPTION_REQUEST')) _sendPrescription(goal.split('::')[2]);
+  return Promise.resolve();
   // Collect messages for this session for potential retrieval later
   const messages: StreamMessage[] = [];
 
@@ -151,17 +172,18 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         // Cleanup when done, but keep connection open for potential future messages
         if (isConnected) {
           clearInterval(pingInterval);
-
+          isConnected = false;
           // Signal completion but don't close the stream yet
           controller.enqueue(
             new TextEncoder().encode(
               `data: ${JSON.stringify({
                 type: 'system',
-                content: 'Processing complete, connection remains open for more messages',
+                content: 'Processing complete, we are closing the connection now',
                 timestamp: Date.now(),
               })}\n\n`
             )
           );
+          controller.close();
 
           // The stream stays open for further interaction
           // This enables continuous back-and-forth without reconnecting
