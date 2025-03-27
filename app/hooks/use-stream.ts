@@ -95,7 +95,7 @@ export function useStreamCommand(options?: UseStreamCommandOptions): UseStreamCo
   const executeCommand = useCallback(
     async (goal: string) => {
       // Clean up any existing stream
-      cleanup();
+      // cleanup();
 
       // Reset state for new command
       setMessages([]);

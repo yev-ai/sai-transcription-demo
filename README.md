@@ -11,6 +11,10 @@ The following commits made it over here after the interview time limit inadverte
 
 No application logic has been changed and what was deployed by 4:59pm PST on 03/19/2025 remains.
 
+# PR Note - 03/27
+
+Going to open this as a PR; I did a timed run right before the interview, this took me approximately 15-20 minutes. This almost entirely fulfills both of the missed core ACs.
+
 Everything below this and outside of those 4 commits was submitted by the deadline.
 
 ## Usage
@@ -33,7 +37,7 @@ Everything below this and outside of those 4 commits was submitted by the deadli
 Here's a list of things I would've loved to get done but ran short on time.
 
 - useStreamCommand hook was to enable generic serverside commands in a separate session
-  - the intent was for SEND_TRANSCRIPT and SEND_PRESCRIPTION to go here
+  - the intent was for NOTE_TRANSCRIPT_REQUEST and NOTE_PRESCRIPTION_REQUEST to go here
   - that said, we do have full duplexing serverside. ran out of time to use it.
   - client-side tools were meant mostly to mitigate the direct WebRTC drawbacks
     - also to work within the WebRTC stream conversation context
